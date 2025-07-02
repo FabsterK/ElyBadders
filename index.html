@@ -4,365 +4,256 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Badminton Club Manager</title>
+    <meta name="theme-color" content="#3B82F6">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Badminton Club">
+    
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiQmFkbWludG9uIENsdWIgTWFuYWdlciIsInNob3J0X25hbWUiOiJCYWRtaW50b25DbHViIiwiZGVzY3JpcHRpb24iOiJTbWFydCBnYW1lIHBhaXJpbmcgYW5kIHBsYXllciBtYW5hZ2VtZW50IGZvciBiYWRtaW50b24gY2x1YnMiLCJzdGFydF91cmwiOiIvIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI2ZmZmZmZiIsInRoZW1lX2NvbG9yIjoiIzNCODJGNiIsIm9yaWVudGF0aW9uIjoicG9ydHJhaXQtcHJpbWFyeSIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNVGt5SWlCb1pXbG5hSFE5SWpFNU1pSWdkbWxsZDBKdmVEMGlNQ0F3SURFNU1pQXhPVElpSUdacGJHdzlJbTV2Ym1VaUlIaHRiRzV6UFNKb2RIUndPaTh2ZDNkM0xuY3pMbTl5Wnk4eU1EQXdMM04yWnlJK0NqeHlaV04wSUhkcFpIUm9QU0l4T1RJaUlHaGxhV2RvZEQwaU1Ua3lJaUJ5ZUQwaU1qUWlJR1pwYkd3OUlpTXpRamcwUmpZaUx6NEtQSE4yWnlCNFBTSTBPQ0lnZVQwaU5EZ2lJSGRwWkhSb1BTSTVOaUlnYUdWcFoyaDBQU0k1TmlJZ2RtbGxkMEp2ZUQwaU1DQXdJREkwSURJMElpQm1hV3hzUFNKdWIyNWxJaUJ6ZEhKdmEyVTlJbmRvYVhSbElpQnpkSEp2YTJVdGQybGtkR2c5SWpJaUlITjBjbTlyWlMxc2FXNWxZMkZ3UFNKeWIzVnVaQ0lnYzNSeWIydGxMV3hwYm1WcWIybHVQU0p5YjNWdVpDSStDanh3WVhSb0lHUTlJbTE0SUROa01UQWdOaUEySUNBMklDMDJJaThLUEhCaGRHZ2daRDBpYlRZZ01Ua2dOaUEySURZZ05pMDJJaThLUEM5emRtYytDand2YzNabkNqd3ZjM1puUGdvPSIsInNpemVzIjoiMTkyeDE5MiIsInR5cGUiOiJpbWFnZS9zdmcreG1sIn0seyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlOVEV5SWlCb1pXbG5hSFE5SWpVeE1pSWdkbWxsZDBKdmVEMGlNQ0F3SURVeE1pQTFNVElpSUdacGJHdzlJbTV2Ym1VaUlIaHRiRzV6UFNKb2RIUndPaTh2ZDNkM0xuY3pMbTl5Wnk4eU1EQXdMM04yWnlJK0NqeHlaV04wSUhkcFpIUm9QU0kxTVRJaUlHaGxhV2RvZEQwaU5URXlJaUJ5ZUQwaU5qUWlJR1pwYkd3OUlpTXpRamcwUmpZaUx6NEtQSE4yWnlCNFBTSXhNamdpSUhrOUlqRXlPQ0lnZDJsa2RHZzlJakkxTmlJZ2FHVnBaMmgwUFNJeU5UWWlJSFpwWlhkQ2IzZzlJakFnTUNBeU5DQXlOQ0lnWm1sc2JEMGlibTl1WlNJZ2MzUnliMnRsUFNKM2FHbDBaU0lnYzNSeWIydGxMWGRwWkhSb1BTSXlJaUJ6ZEhKdmEyVXRiR2x1WldOaGNEMGljbTkxYm1RaUlITjBjbTlyWlMxc2FXNWxhbTlwYmowaWNtOTFibVFpUGdvOGNHRjBhQ0JrUFNKdE5pQTVJRFlnTmlBMklEWXROaUl2UGdvOGMzWm5JSGc5SWpnaUlIazlJamdpSUhkcFpIUm9QU0k0SWlCb1pXbG5hSFE5SWpnaUlIWnBaWGRDYjNnOUlqQWdNQ0F5TkNBeU5DSWdabWxzYkQwaWJtOXVaU0lnYzNSeWIydGxQU0pqZFhKeVpXNTBRMjlzYjNJaUlITjBjbTlyWlMxM2FXUjBhRDBpTWlJZ2MzUnliMnRsTFd4cGJtVmpZWEE5SW5KdmRXNWtJaUJ6ZEhKdmEyVXRiR2x1WldwdmFXNDlJbkp2ZFc1a0lqNEtQSEJoZEdnZ1pEMGliVFlnT1NBMklEWWdOaUEySUMwMklpOEtQQzl6ZG1jS1BDOXpkbWMrQ2p3dmMzWm5QZ289Iiwic2l6ZXMiOiI1MTJ4NTEyIiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV19">
+    
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
-        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; }
+        body { 
+            margin: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #EBF8FF 0%, #FFFFFF 50%, #F0FDF4 100%);
+            min-height: 100vh;
+        }
     </style>
 </head>
 <body>
     <div id="root"></div>
     
     <script type="text/babel">
-        // Lucide React icons (simplified for standalone deployment)
-const Users = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m22 21-2-2"/><path d="m16 16 2 2"/></svg>;
-const Trophy = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55.47.98.97 1.21C12.58 18.73 14.24 19 16 19s3.42-.27 5.03-.79c.5-.23.97-.66.97-1.21v-2.34c0-1.06-.93-2.02-2.05-2.21-1.15-.2-2.46-.34-3.95-.34s-2.8.14-3.95.34C10.93 12.64 10 13.6 10 14.66Z"/></svg>;
-const Play = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="5,3 19,12 5,21"/></svg>;
-const Plus = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14"/><path d="M12 5v14"/></svg>;
-const Settings = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>;
-const BarChart3 = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>;
-const Clock = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>;
-const Crown = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L14.5 8.5l4.281-1.234a.5.5 0 0 1 .642.642L18.5 12.5l1.234 4.281a.5.5 0 0 1-.642.642L14.5 16.5l-2.062 5.234a.5.5 0 0 1-.876 0L9.5 16.5l-4.281 1.234a.5.5 0 0 1-.642-.642L5.5 12.5l-1.234-4.281a.5.5 0 0 1 .642-.642L9.5 8.5l2.062-5.234Z"/></svg>;
-const Target = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>;
-const TrendingUp = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/></svg>;
-const Download = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>;
+        const BadmintonApp = () => {
+            const [deferredPrompt, setDeferredPrompt] = React.useState(null);
+            const [showInstall, setShowInstall] = React.useState(false);
+            const [players, setPlayers] = React.useState([
+                { id: 1, name: 'Alex Chen', gender: 'male', rating: 1650 },
+                { id: 2, name: 'Sarah Wilson', gender: 'female', rating: 1580 },
+                { id: 3, name: 'Mike Johnson', gender: 'male', rating: 1720 },
+                { id: 4, name: 'Emma Davis', gender: 'female', rating: 1420 },
+                { id: 5, name: 'Tom Brown', gender: 'male', rating: 1590 },
+                { id: 6, name: 'Lisa Zhang', gender: 'female', rating: 1610 }
+            ]);
+            const [currentSession, setCurrentSession] = React.useState(null);
+            const [attending, setAttending] = React.useState([]);
+            const [games, setGames] = React.useState([]);
 
-const BadmintonClubManager = () => {
-  const [players, setPlayers] = React.useState([]);
-  const [activeGames, setActiveGames] = React.useState([]);
-  const [gameHistory, setGameHistory] = React.useState([]);
-  const [clubNights, setClubNights] = React.useState([]);
-  const [currentClubNight, setCurrentClubNight] = React.useState(null);
-  const [attendingPlayers, setAttendingPlayers] = React.useState([]);
-  const [courtsInUse, setCourtsInUse] = React.useState(4);
-  const [currentView, setCurrentView] = React.useState('dashboard');
-  const [newPlayer, setNewPlayer] = React.useState({ name: '', gender: 'male', skillLevel: 5 });
-  const [deletedGames, setDeletedGames] = React.useState([]);
-  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
-  const [gameToDelete, setGameToDelete] = React.useState(null);
-  const [showEditModal, setShowEditModal] = React.useState(false);
-  const [gameToEdit, setGameToEdit] = React.useState(null);
-  const [deferredPrompt, setDeferredPrompt] = React.useState(null);
-  const [showInstallPrompt, setShowInstallPrompt] = React.useState(false);
+            // PWA Install Detection
+            React.useEffect(() => {
+                const handler = (e) => {
+                    e.preventDefault();
+                    setDeferredPrompt(e);
+                    setShowInstall(true);
+                };
+                
+                window.addEventListener('beforeinstallprompt', handler);
+                
+                // Show install option after 2 seconds
+                setTimeout(() => setShowInstall(true), 2000);
+                
+                return () => window.removeEventListener('beforeinstallprompt', handler);
+            }, []);
 
-  // PWA Install functionality
-  React.useEffect(() => {
-    const handleBeforeInstallPrompt = (e) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-      setShowInstallPrompt(true);
-    };
-
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      setShowInstallPrompt(false);
-    }
-
-    return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    };
-  }, []);
-
-  const handleInstallClick = async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      console.log(`User response to the install prompt: ${outcome}`);
-      setDeferredPrompt(null);
-      setShowInstallPrompt(false);
-    }
-  };
-
-  // Add PWA manifest and service worker registration
-  React.useEffect(() => {
-    const manifest = {
-      name: "Badminton Club Manager",
-      short_name: "BadmintonClub",
-      description: "Smart game pairing and player management for badminton clubs",
-      start_url: "/",
-      display: "standalone",
-      background_color: "#ffffff",
-      theme_color: "#3B82F6",
-      orientation: "portrait-primary",
-      icons: [
-        {
-          src: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiMzQjgyRjYiLz4KPHN2ZyB4PSI0OCIgeT0iNDgiIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxwYXRoIGQ9Im02IDkgNiA2IDYtNiIvPgo8cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz4KPHN2ZyB4PSIzIiB5PSIzIiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KPHBhdGggZD0ibTYgOSA2IDYgNi02Ii8+CjxwYXRoIGQ9Im02IDkgNiA2IDYtNiIvPgo8L3N2Zz4KPC9zdmc+Cjwvc3ZnPgo=",
-          sizes: "192x192",
-          type: "image/svg+xml"
-        },
-        {
-          src: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9IiMzQjgyRjYiLz4KPHN2ZyB4PSIxMjgiIHk9IjEyOCIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgo8cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iOCIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxwYXRoIGQ9Im02IDkgNiA2IDYtNiIvPgo8L3N2Zz4KPC9zdmc+Cjwvc3ZnPgo=",
-          sizes: "512x512",
-          type: "image/svg+xml"
-        }
-      ]
-    };
-
-    const manifestBlob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
-    const manifestURL = URL.createObjectURL(manifestBlob);
-    
-    let manifestLink = document.querySelector('link[rel="manifest"]');
-    if (!manifestLink) {
-      manifestLink = document.createElement('link');
-      manifestLink.rel = 'manifest';
-      document.head.appendChild(manifestLink);
-    }
-    manifestLink.href = manifestURL;
-
-    const addMetaTag = (name, content) => {
-      let meta = document.querySelector(`meta[name="${name}"]`);
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.name = name;
-        document.head.appendChild(meta);
-      }
-      meta.content = content;
-    };
-
-    addMetaTag('theme-color', '#3B82F6');
-    addMetaTag('mobile-web-app-capable', 'yes');
-    addMetaTag('apple-mobile-web-app-capable', 'yes');
-    addMetaTag('apple-mobile-web-app-status-bar-style', 'default');
-    addMetaTag('apple-mobile-web-app-title', 'Badminton Club');
-
-    let appleTouchIcon = document.querySelector('link[rel="apple-touch-icon"]');
-    if (!appleTouchIcon) {
-      appleTouchIcon = document.createElement('link');
-      appleTouchIcon.rel = 'apple-touch-icon';
-      appleTouchIcon.href = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iMjAiIGZpbGw9IiMzQjgyRjYiLz4KPHN2ZyB4PSI0NSIgeT0iNDUiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxwYXRoIGQ9Im02IDkgNiA2IDYtNiIvPgo8L3N2Zz4KPC9zdmc+";
-      document.head.appendChild(appleTouchIcon);
-    }
-
-    if ('serviceWorker' in navigator) {
-      const swCode = `
-        const CACHE_NAME = 'badminton-club-v1';
-        const urlsToCache = [
-          '/',
-          '/manifest.json'
-        ];
-
-        self.addEventListener('install', (event) => {
-          event.waitUntil(
-            caches.open(CACHE_NAME)
-              .then((cache) => cache.addAll(urlsToCache))
-          );
-        });
-
-        self.addEventListener('fetch', (event) => {
-          event.respondWith(
-            caches.match(event.request)
-              .then((response) => {
-                if (response) {
-                  return response;
+            const handleInstall = async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const result = await deferredPrompt.userChoice;
+                    setDeferredPrompt(null);
                 }
-                return fetch(event.request);
-              }
-            )
-          );
-        });
-      `;
-      
-      const swBlob = new Blob([swCode], { type: 'application/javascript' });
-      const swURL = URL.createObjectURL(swBlob);
-      
-      navigator.serviceWorker.register(swURL)
-        .then(() => console.log('Service Worker registered'))
-        .catch((error) => console.log('Service Worker registration failed:', error));
-    }
+                setShowInstall(false);
+            };
 
-    return () => {
-      URL.revokeObjectURL(manifestURL);
-    };
-  }, []);
+            const startSession = () => {
+                setCurrentSession({
+                    id: Date.now(),
+                    date: new Date().toLocaleDateString(),
+                    active: true
+                });
+            };
 
-  // Local storage for persistence
-  React.useEffect(() => {
-    const savedData = localStorage.getItem('badmintonClubData');
-    if (savedData) {
-      try {
-        const data = JSON.parse(savedData);
-        if (data.players) setPlayers(data.players);
-        if (data.gameHistory) setGameHistory(data.gameHistory);
-        if (data.clubNights) setClubNights(data.clubNights);
-        if (data.currentClubNight) setCurrentClubNight(data.currentClubNight);
-        if (data.attendingPlayers) setAttendingPlayers(data.attendingPlayers);
-      } catch (error) {
-        console.error('Error loading saved data:', error);
-      }
-    }
-  }, []);
+            const toggleAttendance = (playerId) => {
+                setAttending(prev => 
+                    prev.includes(playerId) 
+                        ? prev.filter(id => id !== playerId)
+                        : [...prev, playerId]
+                );
+            };
 
-  React.useEffect(() => {
-    const dataToSave = {
-      players,
-      gameHistory,
-      clubNights,
-      currentClubNight,
-      attendingPlayers
-    };
-    localStorage.setItem('badmintonClubData', JSON.stringify(dataToSave));
-  }, [players, gameHistory, clubNights, currentClubNight, attendingPlayers]);
+            const generateGame = () => {
+                if (attending.length >= 4) {
+                    const attendingPlayers = attending.map(id => players.find(p => p.id === id));
+                    const shuffled = [...attendingPlayers].sort(() => 0.5 - Math.random());
+                    
+                    const newGame = {
+                        id: Date.now(),
+                        court: games.length + 1,
+                        team1: shuffled.slice(0, 2),
+                        team2: shuffled.slice(2, 4)
+                    };
+                    
+                    setGames([...games, newGame]);
+                }
+            };
 
-  // Initialize with some sample data including club nights
-  React.useEffect(() => {
-    const savedData = localStorage.getItem('badmintonClubData');
-    if (!savedData) {
-      const samplePlayers = [
-        { id: 1, name: 'Alex Chen', gender: 'male', skillLevel: 7, gamesPlayed: 12, wins: 8, rating: 1650 },
-        { id: 2, name: 'Sarah Wilson', gender: 'female', skillLevel: 6, gamesPlayed: 10, wins: 6, rating: 1580 },
-        { id: 3, name: 'Mike Johnson', gender: 'male', skillLevel: 8, gamesPlayed: 15, wins: 12, rating: 1720 },
-        { id: 4, name: 'Emma Davis', gender: 'female', skillLevel: 5, gamesPlayed: 8, wins: 4, rating: 1420 },
-        { id: 5, name: 'Tom Brown', gender: 'male', skillLevel: 6, gamesPlayed: 11, wins: 7, rating: 1590 },
-        { id: 6, name: 'Lisa Zhang', gender: 'female', skillLevel: 7, gamesPlayed: 9, wins: 6, rating: 1610 },
-        { id: 7, name: 'James Wilson', gender: 'male', skillLevel: 5, gamesPlayed: 7, wins: 3, rating: 1480 },
-        { id: 8, name: 'Anna Smith', gender: 'female', skillLevel: 6, gamesPlayed: 9, wins: 5, rating: 1520 }
-      ];
-      
-      const pastClubNights = [
-        { 
-          id: 1, 
-          date: '2025-06-24', 
-          status: 'completed',
-          attendees: [1, 2, 3, 4, 5, 6],
-          totalGames: 8,
-          totalShuttles: 12
-        }
-      ];
-      
-      setPlayers(samplePlayers);
-      setClubNights(pastClubNights);
-    }
-  }, []);
+            return (
+                <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 p-4">
+                    {/* Install Banner */}
+                    {showInstall && (
+                        <div className="bg-blue-600 text-white p-4 rounded-xl mb-6 shadow-lg">
+                            <div className="flex justify-between items-center">
+                                <div>
+                                    <h3 className="font-bold">📱 Install Badminton Club Manager</h3>
+                                    <p className="text-blue-100 text-sm">Install for offline use and quick access</p>
+                                </div>
+                                <div className="flex space-x-2">
+                                    <button 
+                                        onClick={handleInstall}
+                                        className="px-4 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-blue-50"
+                                    >
+                                        Install
+                                    </button>
+                                    <button 
+                                        onClick={() => setShowInstall(false)}
+                                        className="px-4 py-2 border border-blue-300 text-white rounded-lg hover:bg-blue-700"
+                                    >
+                                        Later
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
-  const startNewClubNight = () => {
-    const today = new Date();
-    const newClubNight = {
-      id: Date.now(),
-      date: today.toISOString().split('T')[0],
-      status: 'active',
-      attendees: [],
-      totalGames: 0
-    };
-    
-    setClubNights([...clubNights, newClubNight]);
-    setCurrentClubNight(newClubNight);
-    setAttendingPlayers([]);
-    setActiveGames([]);
-  };
+                    {/* Header */}
+                    <div className="bg-white rounded-xl shadow-lg p-6 mb-6 text-center">
+                        <h1 className="text-4xl font-bold text-gray-800 mb-2">
+                            🏆 Badminton Club Manager
+                        </h1>
+                        <p className="text-gray-600 text-lg">Smart game pairing and player management</p>
+                        
+                        {currentSession ? (
+                            <div className="mt-4 p-3 bg-green-50 rounded-lg">
+                                <p className="text-green-800 font-medium">
+                                    ✅ Club Night Active - {currentSession.date}
+                                </p>
+                            </div>
+                        ) : (
+                            <div className="mt-4">
+                                <button 
+                                    onClick={startSession}
+                                    className="px-6 py-3 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700 shadow-lg"
+                                >
+                                    🚀 Start New Club Night
+                                </button>
+                            </div>
+                        )}
+                    </div>
 
-  const togglePlayerAttendance = (playerId) => {
-    if (attendingPlayers.includes(playerId)) {
-      setAttendingPlayers(attendingPlayers.filter(id => id !== playerId));
-    } else {
-      setAttendingPlayers([...attendingPlayers, playerId]);
-    }
-  };
+                    {currentSession && (
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            {/* Players */}
+                            <div className="bg-white rounded-xl shadow-lg p-6">
+                                <h2 className="text-xl font-bold text-gray-800 mb-4">
+                                    👥 Players ({attending.length} attending)
+                                </h2>
+                                <div className="space-y-3">
+                                    {players.map(player => (
+                                        <div 
+                                            key={player.id}
+                                            onClick={() => toggleAttendance(player.id)}
+                                            className={`p-3 rounded-lg border-2 cursor-pointer transition-all ${
+                                                attending.includes(player.id) 
+                                                    ? 'border-green-400 bg-green-50' 
+                                                    : 'border-gray-200 bg-gray-50 hover:border-gray-300'
+                                            }`}
+                                        >
+                                            <div className="flex justify-between items-center">
+                                                <div>
+                                                    <p className="font-medium">
+                                                        {player.name} {player.gender === 'male' ? '♂' : '♀'}
+                                                    </p>
+                                                    <p className="text-sm text-gray-600">
+                                                        Rating: {player.rating}
+                                                    </p>
+                                                </div>
+                                                {attending.includes(player.id) && (
+                                                    <span className="text-green-600 font-bold text-xl">✓</span>
+                                                )}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                
+                                {attending.length >= 4 && (
+                                    <button 
+                                        onClick={generateGame}
+                                        className="w-full mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700"
+                                    >
+                                        🎯 Generate New Game
+                                    </button>
+                                )}
+                            </div>
 
-  const finishClubNight = () => {
-    if (currentClubNight) {
-      const nightGames = gameHistory.filter(game => game.clubNightId === currentClubNight.id);
-      const totalShuttles = nightGames.reduce((total, game) => total + (game.shuttlesUsed || 0), 0);
-      
-      const updatedClubNight = {
-        ...currentClubNight,
-        status: 'completed',
-        attendees: attendingPlayers,
-        totalGames: nightGames.length,
-        totalShuttles: totalShuttles
-      };
-      
-      setClubNights(clubNights.map(cn => 
-        cn.id === currentClubNight.id ? updatedClubNight : cn
-      ));
-      setCurrentClubNight(null);
-      setAttendingPlayers([]);
-      setActiveGames([]);
-    }
-  };
+                            {/* Games */}
+                            <div className="bg-white rounded-xl shadow-lg p-6">
+                                <h2 className="text-xl font-bold text-gray-800 mb-4">
+                                    🏸 Active Games ({games.length})
+                                </h2>
+                                
+                                {games.length === 0 ? (
+                                    <div className="text-center py-8 text-gray-500">
+                                        <p>No games yet</p>
+                                        <p className="text-sm">Select players and generate games!</p>
+                                    </div>
+                                ) : (
+                                    <div className="space-y-4">
+                                        {games.map(game => (
+                                            <div 
+                                                key={game.id}
+                                                className="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-lg border border-green-200"
+                                            >
+                                                <h3 className="font-bold text-gray-800 mb-3">
+                                                    Court {game.court}
+                                                </h3>
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                    <div className="bg-white p-3 rounded">
+                                                        <p className="font-medium text-blue-600 text-sm">Team 1</p>
+                                                        <p className="text-gray-700">
+                                                            {game.team1.map(p => p.name).join(' & ')}
+                                                        </p>
+                                                    </div>
+                                                    <div className="bg-white p-3 rounded">
+                                                        <p className="font-medium text-red-600 text-sm">Team 2</p>
+                                                        <p className="text-gray-700">
+                                                            {game.team2.map(p => p.name).join(' & ')}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
 
-  const deleteGameWithReason = (gameId, reason) => {
-    const game = activeGames.find(g => g.id === gameId);
-    if (!game) return;
-
-    const deletedGame = {
-      ...game,
-      deletedAt: new Date(),
-      deleteReason: reason,
-      status: 'deleted'
-    };
-
-    setDeletedGames([...deletedGames, deletedGame]);
-    setActiveGames(activeGames.filter(g => g.id !== gameId));
-    setShowDeleteModal(false);
-    setGameToDelete(null);
-  };
-
-  const editGameTeams = (gameId, newTeam1, newTeam2) => {
-    const updatedGames = activeGames.map(game => {
-      if (game.id === gameId) {
-        return {
-          ...game,
-          team1: newTeam1,
-          team2: newTeam2,
-          players: [...newTeam1, ...newTeam2],
-          modified: true,
-          modifiedAt: new Date()
+                    {/* Footer */}
+                    <div className="mt-8 text-center text-gray-500 text-sm">
+                        <p>🏸 Badminton Club Manager v1.0</p>
+                        <p>Install this app for the best experience!</p>
+                    </div>
+                </div>
+            );
         };
-      }
-      return game;
-    });
-    
-    setActiveGames(updatedGames);
-    setShowEditModal(false);
-    setGameToEdit(null);
-  };
 
-  const addPlayer = () => {
-    if (newPlayer.name.trim()) {
-      const player = {
-        id: Date.now(),
-        ...newPlayer,
-        gamesPlayed: 0,
-        wins: 0,
-        rating: 1500
-      };
-      setPlayers([...players, player]);
-      setNewPlayer({ name: '', gender: 'male', skillLevel: 5 });
-    }
-  };
-
-  const generateBalancedPairings = () => {
-    if (!currentClubNight) return;
-    
-    const availablePlayers = players.filter(p => 
-      attendingPlayers.includes(p.id) &&
-      !activeGames.some(game => 
-        game.players.some(player => player.id === p.id)
-      )
-    );
-
-    if (availablePlayers.length < 4) return;
-
-    const pairings = [];
-    const playersToUse = [...availablePlayers];
-    
-    playersToUse.sort((a, b) => b.rating - a.rating);
-
-    for (let court = 0; court < courtsInUse && playersToUse.length >= 4; court++) {
-      const team1 = [];
-      const team2 = [];
-
-      const males = playersToUse.filter(p => p.gender === 'male');
-      const females = playersToUse.filter(p => p.gender === 'female');
-
-      if (males.length >= 2 && females.length >= 2) {
-        team1.push(males.shift(), females.shift());
-        team2.push(males.shift(), females.shift());
-      } else if (playersToUse.length >= 4) {
-        team1.push(playersToUse.shift(), playersTo
+        // Render the app
+        ReactDOM.render(<BadmintonApp />, document.getElementById('root'));
     </script>
 </body>
 </html>
